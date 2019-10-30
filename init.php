@@ -6,7 +6,8 @@
             'host' => '127.0.0.1',
             'username' => 'root',
             'password' => 'ROOT',
-            'dbname' => 'db'
+            'dbname' => 'db', 
+            'charset'=> 'utf8mb4'
         ),
         'remember' => array(
             'cookie_name' => 'hash',
@@ -18,7 +19,7 @@
 
         );
 
-    spl_autoload_register('myAutoLoader');
+    spl_autoload_register('myAutoLoader'); //automatically loads a class whenever it is instantiated
     function myAutoLoader($classname){
         $path = "classes/";
         $extension = ".class.php";
