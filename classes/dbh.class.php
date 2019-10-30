@@ -67,6 +67,10 @@ class Dbh {
         return false;       
     }
 
+    public function results() {
+        return $this->_results;
+    }
+
     public function get($table, $where) {
         return $this->action('SELECT *', $table, $where);
     }
