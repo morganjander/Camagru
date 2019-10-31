@@ -42,7 +42,7 @@ class Dbh {
                 $this->_count = $this->_query->rowCount();
             }
             else {
-                $this->_error = true;
+                $this->_error = true; 
             }
         }
         return $this;
@@ -77,6 +77,53 @@ class Dbh {
 
     public function delete($table, $where) {
         return $this->action('DELETE', $table, $where);
+    }
+
+    public function insert($table, $fields = array()) {
+
+            $keys = array_keys($fields);
+            $values = null;
+            $x = 1;
+
+            foreach ($fields as $field) {
+                $values .= '?';
+                
+                if ($x < count($fields)) {//have we reached the end of the list of fields
+                    $values .= ', ';
+                }
+                $x++;
+            }
+
+            $sql = "INSERT INTO {$table} (" .implode(', ', $keys) . ") VALUES ({$values})";
+
+            if (!$this->query($sql, $fields)->error()) {
+                return true;
+                echo 'Success';
+            }
+
+        return false;
+
+    }
+
+    public function update($table, $id, $fields) {
+        $set = '';
+        $x = 1;
+
+        foreach ($fields as $name => $value) {
+            $set .= "{$name} = ?";
+
+            if($x < count($fields)) {
+                $set .= ", ";
+
+            }
+            $x++;
+        }
+        
+        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+        if (!$this->query($sql, $fields)->error()) {
+            return true;
+        }
+
     }
 
     public function count(){

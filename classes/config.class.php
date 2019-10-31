@@ -1,7 +1,7 @@
 <?php
 class config{
 
-    public static function get($path = null){
+    public static function get($path = null){//returns details set in init.php
         if ($path){
             $config = $GLOBALS['config'];
             $path = explode('/', $path);

@@ -57,7 +57,7 @@
             username VARCHAR(20),
             password VARCHAR(255),
             salt VARCHAR(255),
-            name VARCHAR(255),
+            email VARCHAR(255),
             joined DATETIME,
             groups INT(11)
             )";

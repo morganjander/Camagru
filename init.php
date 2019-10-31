@@ -14,7 +14,8 @@
             'cookie_expiry' => 10800
         ),
         'session' => array(
-            'session_name' => 'user'
+            'session_name' => 'user',
+            'token_name' => 'token'
         )
 
         );
