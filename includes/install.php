@@ -58,7 +58,8 @@
             password VARCHAR(255),
             salt VARCHAR(255),
             email VARCHAR(255),
-            joined DATETIME,
+            verification_token VARCHAR(255),
+            verified INT (11),
             groups INT(11)
             )";
          

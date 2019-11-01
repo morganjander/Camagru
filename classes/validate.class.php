@@ -72,4 +72,23 @@ class Validate {
         return $this->_passed;
     }
 
+    public function verify_email($to, $code) {
+
+        $link = "http://localhost/Camagru/verify.php?code=" . $code;
+        $str = "";
+        $str .= "Hi, Please click on ";
+        $str .= "<a href='{$link}'>this link</a>";
+        $str .= " to verify your account.";
+       
+        $subject  = 'Verify Camagru';
+        $message  = $str;
+        $headers  = 'From: mjandercamagru@gmail.com' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=utf-8';
+        if(mail($to, $subject, $message, $headers))
+        return true;
+        else
+        return false;
+    }
+    
 }

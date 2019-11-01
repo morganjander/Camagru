@@ -28,16 +28,19 @@ if (Input::exists()) {
         if ($validation->passed()) {
             $user = new user();
             $salt = hash::salt(32);
+            $code = hash::salt(32);
             try {
                 $user->create(array(
                     'username' => input::get('username'),
                     'password' => hash::make(input::get('password'), $salt),
                     'salt' => $salt,
-                    'email' => input::get('email')
+                    'email' => input::get('email'),
+                    'verification_token' => $code
                 ));
                 session::flash('home', 'You have been registered and can now log in!');
-                redirect::to('404');
-
+                if (validate::verify_email(input::get('email'), $code)) {
+                    echo 'Please check your email';
+                }
             } catch (Exception $e) {
                 die ($e->getMessage());
             }
