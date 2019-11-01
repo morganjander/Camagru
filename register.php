@@ -1,35 +1,53 @@
 <?php
 require_once 'init.php';
+
 if (Input::exists()) {
-    $validate = new Validate();
-    $validation = $validate->check($_POST, array (
-        'username' => array(
-            'required' => true,
-            'min' => 2,
-            'max' => 20,
-            'unique' => 'users'
-        ),
-        'email' => array(
-            'required' => true,
-            'valid' => true,
-        ),
-        'password' => array(
-            'required' => true,
-            'min' => 6,
-            'upper' => true
-        ),
-        'repeat_password' => array(
-            'required' => true,
-            'matches' => 'password'
-        )
-    ));
-   if ($validation->passed()) {
-        echo 'passed';
-   } else {
-       foreach ($validation->errors() as $error) {
-           echo $error, '<br>';
-       }
-   }
+    if (token::check(input::get('token'))) {//protect against csrf
+        $validate = new Validate();
+        $validation = $validate->check($_POST, array (
+            'username' => array(
+                'required' => true,
+                'min' => 2,
+                'max' => 20,
+                'unique' => 'users'
+            ),
+            'email' => array(
+                'required' => true,
+                'valid' => true,
+            ),
+            'password' => array(
+                'required' => true,
+                'min' => 6,
+                'upper' => true
+            ),
+            'repeat_password' => array(
+                'required' => true,
+                'matches' => 'password'
+            )
+        ));
+        if ($validation->passed()) {
+            $user = new user();
+            $salt = hash::salt(32);
+            try {
+                $user->create(array(
+                    'username' => input::get('username'),
+                    'password' => hash::make(input::get('password'), $salt),
+                    'salt' => $salt,
+                    'email' => input::get('email')
+                ));
+                session::flash('home', 'You have been registered and can now log in!');
+                redirect::to('404');
+
+            } catch (Exception $e) {
+                die ($e->getMessage());
+            }
+            session::flash('Success', 'Registration successful');
+        } else {
+            foreach ($validation->errors() as $error) {
+                echo $error, '<br>';
+            }
+        }
+    }
 }
 ?>
 

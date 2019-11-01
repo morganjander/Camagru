@@ -1,12 +1,15 @@
 <?php
 
-class User extends Dbh {
+class User {
 
-    public function getAllUsers(){
+    private $_db;
+    public function __construct($user = null) {
+        $this->_db = Dbh::getInstance();
+    }
 
-        $stmt = $this->connect()->query("SELECT * FROM users");
-        while ($row = $stmt->fetch()) {
-            echo $row['name'];
+    public function create($fields = array()) {
+        if(!$this->_db->insert('users', $fields)) {
+            throw new Exception('Problem creating account');
         }
     }
 }
