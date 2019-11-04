@@ -72,9 +72,9 @@ class Validate {
         return $this->_passed;
     }
 
-    public function verify_email($to, $code) {
+    public function send_email($to, $code) {
 
-        $link = "http://localhost/Camagru/verify.php?code=" . $code;
+        $link = "http://localhost/Camagru/verify.php?code=" . $code . "&user=" . $to;
         $str = "";
         $str .= "Hi, Please click on ";
         $str .= "<a href='{$link}'>this link</a>";
@@ -88,6 +88,13 @@ class Validate {
         if(mail($to, $subject, $message, $headers))
         return true;
         else
+        return false;
+    }
+
+    public function verify_code($code, $sent_code) {
+        if ($code === $sent_code) {
+            return true;
+        } 
         return false;
     }
     

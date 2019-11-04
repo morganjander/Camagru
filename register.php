@@ -29,22 +29,38 @@ if (Input::exists()) {
             $user = new user();
             $salt = hash::salt(32);
             $code = hash::salt(32);
+            echo "Stored:<br>";
+            
             try {
                 $user->create(array(
                     'username' => input::get('username'),
                     'password' => hash::make(input::get('password'), $salt),
                     'salt' => $salt,
                     'email' => input::get('email'),
-                    'verification_token' => $code
+                    'verification_token' => $code,
+                    'verified' => 0
                 ));
+
+                $result = $user->find(input::get('username'));
+                if ($result) {
+                $results = $user->data();
+                $saltcode = $results->verification_token;
+                $user->update($results->id, array(
+                    'password' => hash::make(input::get('password'), $results->salt),
+                    'verification_token' => hash::make('code', $saltcode) //because retrieving salt from the database changes it argh                 
+                ));
+                $code = hash::make('code', $saltcode);
+            }
                 session::flash('home', 'You have been registered and can now log in!');
-                if (validate::verify_email(input::get('email'), $code)) {
+                if ($validation->send_email(input::get('email'), $code)) {
                     echo 'Please check your email';
                 }
             } catch (Exception $e) {
                 die ($e->getMessage());
             }
             session::flash('Success', 'Registration successful');
+
+            
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';

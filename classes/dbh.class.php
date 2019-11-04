@@ -71,6 +71,11 @@ class Dbh {
         return $this->_results;
     }
 
+    public function first() {
+        $data = $this->results();
+        return $data[0];
+    }
+
     public function get($table, $where) {
         return $this->action('SELECT *', $table, $where);
     }
