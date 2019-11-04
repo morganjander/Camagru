@@ -72,15 +72,26 @@ class Validate {
         return $this->_passed;
     }
 
-    public function send_email($to, $code) {
+    public function send_email($to, $code, $reset = null) {
+        if (!$reset) {
 
-        $link = "http://localhost/Camagru/verify.php?code=" . $code . "&user=" . $to;
-        $str = "";
-        $str .= "Hi, Please click on ";
-        $str .= "<a href='{$link}'>this link</a>";
-        $str .= " to verify your account.";
+            $link = "http://localhost/Camagru/verify.php?code=" . $code . "&user=" . $to;
+            $str = "";
+            $str .= "Hi, Please click on ";
+            $str .= "<a href='{$link}'>this link</a>";
+            $str .= " to verify your account.";
        
-        $subject  = 'Verify Camagru';
+            $subject  = 'Verify Camagru';
+    } else {
+            $link = "http://localhost/Camagru/update.php?code=" . $code . "&user=" . $to;
+            $str = "";
+            $str .= "Hi, Please click on ";
+            $str .= "<a href='{$link}'>this link</a>";
+            $str .= " to reset your password.";
+       
+            $subject  = 'Reset your Camagru password';
+
+    }
         $message  = $str;
         $headers  = 'From: mjandercamagru@gmail.com' . "\r\n" .
             'MIME-Version: 1.0' . "\r\n" .

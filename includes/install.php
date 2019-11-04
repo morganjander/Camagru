@@ -29,10 +29,11 @@
          }  
          echo 'Connected successfully<br/>';  
   
-         $sql = "create table users_session(
-            id INT AUTO_INCREMENT NOT NULL,primary key (id),
+         $sql = "create table images(
+            image_id INT AUTO_INCREMENT NOT NULL,primary key (id),
             user_id INT(20),
-            hash VARCHAR(255)
+            image_src VARCHAR(255),
+            name VARCHAR(20)
             )";  
             if(mysqli_query($conn, $sql)){  
                echo "users_session created successfully<br/>";  
@@ -40,10 +41,10 @@
                else {  
                   echo "users_session is not created successfully" . mysqli_error($conn);  
                }
-         $sql = "create table groups(
+         $sql = "create table comments(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
-            name VARCHAR(20),
-            permissions TEXT(11)
+            img_id INT(20),
+            comment_text VARCHAR(255)
             )";  
          
          if(mysqli_query($conn, $sql)){  

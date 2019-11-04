@@ -46,5 +46,5 @@ if (token::check(input::get('token'))) {
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Log in"> 
+    <input type="submit" value="Log in"> <a href="forgot_password.php">Forgot Password?</a>
 </form>
