@@ -13,7 +13,8 @@ else {
             $user->update($results->id, array(
                 'verified' => 1
             ));
-            echo "Thank you, your account has been verified";
+            session::flash('success', 'Thank you, your account has been verified');
+            redirect::to('index.php');
         }
         else {
             echo "uh-oh";

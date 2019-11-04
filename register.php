@@ -51,14 +51,13 @@ if (Input::exists()) {
                 ));
                 $code = hash::make('code', $saltcode);
             }
-                session::flash('home', 'You have been registered and can now log in!');
+        
                 if ($validation->send_email(input::get('email'), $code)) {
                     echo 'Please check your email';
                 }
             } catch (Exception $e) {
                 die ($e->getMessage());
             }
-            session::flash('Success', 'Registration successful');
 
             
         } else {

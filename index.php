@@ -1,6 +1,7 @@
 
 <?php
     require_once 'init.php';
+    echo session::flash('success');
     $user = new user();
     if ($user->isLoggedIn()) {
     ?>

@@ -83,7 +83,7 @@ class Validate {
        
             $subject  = 'Verify Camagru';
     } else {
-            $link = "http://localhost/Camagru/update.php?code=" . $code . "&user=" . $to;
+            $link = "http://localhost/Camagru/password_reset.php?code=" . $code . "&user=" . $to;
             $str = "";
             $str .= "Hi, Please click on ";
             $str .= "<a href='{$link}'>this link</a>";

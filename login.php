@@ -1,6 +1,7 @@
 <?php
 
 require_once 'init.php';
+echo session::flash('success');
 if (token::check(input::get('token'))) {
     
     $validate = new validate();
@@ -13,7 +14,6 @@ if (token::check(input::get('token'))) {
 
         $user = new user();
         $login = $user->login(input::get('username'), input::get('password'));
-       // $verified = $user->find(input::get('username'))->data()->verified;
         $result = $user->find(input::get('username'));
         if ($result) {
             $verified = $user->data()->verified;

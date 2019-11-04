@@ -5,7 +5,7 @@ if (token::check(input::get('token'))) {
     $validation = $validate->check($_POST, array(
         'email' => array('required' => true)
     ));
-}
+
 if ($validation->passed()) {
     $user = new user();
     $result = $user->find(input::get('email'));
@@ -19,6 +19,7 @@ if ($validation->passed()) {
                 }
             }
         }
+}
 }
 ?>
 <form action="" method="post">
