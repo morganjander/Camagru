@@ -30,16 +30,16 @@
          echo 'Connected successfully<br/>';  
   
          $sql = "create table images(
-            image_id INT AUTO_INCREMENT NOT NULL,primary key (id),
+            id INT AUTO_INCREMENT NOT NULL,primary key (id),
             user_id INT(20),
             image_src VARCHAR(255),
             name VARCHAR(20)
             )";  
             if(mysqli_query($conn, $sql)){  
-               echo "users_session created successfully<br/>";  
+               echo "images created successfully<br/>";  
                } 
                else {  
-                  echo "users_session is not created successfully" . mysqli_error($conn);  
+                  echo "images is not created successfully<br/>" . mysqli_error($conn);  
                }
          $sql = "create table comments(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
@@ -48,9 +48,9 @@
             )";  
          
          if(mysqli_query($conn, $sql)){  
-         echo "groups table created successfully<br/>";  
+         echo "comments table created successfully<br/>";  
          } else {  
-            echo "groups table is not created successfully " . mysqli_error($conn);  
+            echo "comments table is not created successfully<br/>" . mysqli_error($conn);  
          }
 
          $sql = "create table users(
@@ -60,14 +60,13 @@
             salt VARCHAR(255),
             email VARCHAR(255),
             verification_token VARCHAR(255),
-            verified INT (11),
-            groups INT(11)
+            verified INT (11)
             )";
          
          if(mysqli_query($conn, $sql)){  
          echo "users table created successfully<br/>";  
          } else {  
-            echo "users table is not created successfully" . mysqli_error($conn);  
+            echo "users table is not created successfully<br/>" . mysqli_error($conn);  
          }  
          
          mysqli_close($conn);   
