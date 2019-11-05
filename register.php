@@ -29,7 +29,6 @@ if (Input::exists()) {
             $user = new user();
             $salt = hash::salt(32);
             $code = hash::salt(32);
-            echo "Stored:<br>";
             
             try {
                 $user->create(array(

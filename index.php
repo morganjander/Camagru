@@ -12,7 +12,7 @@
     <?php
 
     } else {
-        echo '<p>You need to <a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';
+        echo '<p><a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';
     }
     
 
