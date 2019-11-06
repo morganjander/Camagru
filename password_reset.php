@@ -36,9 +36,13 @@ if (Input::exists()) {
                         $user->update($results->id, array(
                         'password' => hash::make(input::get('password'), $results->salt)
                         ));
-                        $user->logout();
-                        session::flash('success', 'Password updated successfully');
-                        redirect::to('login.php');
+                        session::flash('updated', 'Password updated successfully');
+                        if ($user->isLoggedIn()) {
+                            redirect::to('profile.php');
+                        } else {
+                            redirect::to('login.php');
+                        }
+                        
                         
                 } catch (Exception $e) {
                     die ($e->getMessage());

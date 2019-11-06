@@ -14,6 +14,7 @@ if (Input::exists()) {
             'email' => array(
                 'required' => true,
                 'valid' => true,
+                'unique' => 'users'
             ),
             'password' => array(
                 'required' => true,

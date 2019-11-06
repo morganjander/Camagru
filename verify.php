@@ -9,11 +9,12 @@ else {
     if ($result) {
         $results = $user->data();
         $token = $results->verification_token;
+        echo $token;
         if ($token === $_GET['code']) {
             $user->update($results->id, array(
                 'verified' => 1
             ));
-            session::flash('success', 'Thank you, your account has been verified');
+            session::flash('verified', 'Thank you, your account has been verified');
             redirect::to('index.php');
         }
         else {
