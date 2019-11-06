@@ -1,7 +1,8 @@
 <?php
 require_once 'init.php';
-print_r($_SESSION);
-echo session::flash('updated');
+if (session::exists('updated')) {
+    echo session::flash('updated');
+}
 $user = new user();
 if ($user->isLoggedIn()) {
     ?>

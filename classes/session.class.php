@@ -26,5 +26,6 @@ class session {
         } else {
             self::put($name, $string);
         }
+        return '';
     }
 }

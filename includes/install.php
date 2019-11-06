@@ -13,11 +13,11 @@
          if(!$conn){
             echo 'Connected failure<br>';
          }
-         echo 'Connected successfully<br>';
-         $sql = "CREATE DATABASE db";
+        // echo 'Connected successfully<br>';
+         $sql = "CREATE DATABASE IF NOT EXISTS db";
          
          if (mysqli_query($conn, $sql)) {
-            echo "Database created successfully<br/>";
+         //   echo "Database created successfully<br/>";
          } else {
             echo "Error creating database: " . mysqli_error($conn);
          }
@@ -27,33 +27,32 @@
          if(!$conn){  
             die('Could not connect: '.mysqli_connect_error());  
          }  
-         echo 'Connected successfully<br/>';  
   
-         $sql = "create table images(
+         $sql = "create table IF NOT EXISTS images(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
             user_id INT(20),
             image_src VARCHAR(255),
             name VARCHAR(20)
             )";  
             if(mysqli_query($conn, $sql)){  
-               echo "images created successfully<br/>";  
+            //   echo "images created successfully<br/>";  
                } 
                else {  
                   echo "images is not created successfully<br/>" . mysqli_error($conn);  
                }
-         $sql = "create table comments(
+         $sql = "create table IF NOT EXISTS comments(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
             img_id INT(20),
             comment_text VARCHAR(255)
             )";  
          
          if(mysqli_query($conn, $sql)){  
-         echo "comments table created successfully<br/>";  
+         //echo "comments table created successfully<br/>";  
          } else {  
             echo "comments table is not created successfully<br/>" . mysqli_error($conn);  
          }
 
-         $sql = "create table users(
+         $sql = "create table IF NOT EXISTS users(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
             username VARCHAR(20),
             password VARCHAR(255),
@@ -64,7 +63,7 @@
             )";
          
          if(mysqli_query($conn, $sql)){  
-         echo "users table created successfully<br/>";  
+        // echo "users table created successfully<br/>";  
          } else {  
             echo "users table is not created successfully<br/>" . mysqli_error($conn);  
          }  

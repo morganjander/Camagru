@@ -1,7 +1,10 @@
 <?php
 
 require_once 'init.php';
-echo session::flash('updated');
+if (session::exists('updated')) {
+    echo session::flash('updated');
+}
+
 if (token::check(input::get('token'))) {
     
     $validate = new validate();

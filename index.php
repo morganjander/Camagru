@@ -1,7 +1,10 @@
 
 <?php
     require_once 'init.php';
-    echo session::flash('success');
+    require_once 'includes/install.php';
+    if (session::exists('verified')) {
+        echo session::flash('verified');
+    }
     $user = new user();
     if ($user->isLoggedIn()) {
     ?>
