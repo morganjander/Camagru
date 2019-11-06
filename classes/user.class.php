@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class user {
 
     private $_db,
             $_data,

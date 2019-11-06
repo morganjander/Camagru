@@ -10,10 +10,31 @@ if ($user->isLoggedIn()) {
     <ul>
     <li><a href="update.php">Change Username</a></li>
     <li><a href="password_reset.php">Change Password</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="functions/logout_user.php">Logout</a></li>
     </ul>
+    <html>
+    <form action="../functions/upload_photo.php" method="post" enctype="multipart/form-data">
+            <div class = "box column is-7 is-offset-one-quarter has-text-centered">
+                <div class="field column is-10 is-offset-1">
+                    <p class="is-one-quarter">
+                        <h3>Upload new image:</h3> 
+                        <br />
+                        <input class = " is-offset-5 has-text-centered" type="file" name="new_upload" accept="image/*">
+                    </p>
+                </div>
+                    <div class="field column">
+                        <p class="control has-text-centered">
+                            <input type="submit" name="upload_now" class="button" style="background-color:#f35588" value="Upload Now"/>
+                            <!-- <button type ="file" name="upload_now" class="button is-primary is-outlined">Upload now</button> -->
+                        </p>
+                    </div>
+                </div>
+            </form>
+    </html>
     <?php
 
     } else {
         echo '<p>You need to <a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';
     }
+    ?>
+    

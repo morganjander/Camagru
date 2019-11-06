@@ -1,5 +1,5 @@
 <?php
-class Validate {
+class validate {
     private $_passed = false,
             $_errors = array(),
             $_db = null;

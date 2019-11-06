@@ -1,75 +1,14 @@
 <?php
 require_once 'init.php';
-
-if (Input::exists()) {
-    if (token::check(input::get('token'))) {//protect against csrf
-        $validate = new Validate();
-        $validation = $validate->check($_POST, array (
-            'username' => array(
-                'required' => true,
-                'min' => 2,
-                'max' => 20,
-                'unique' => 'users'
-            ),
-            'email' => array(
-                'required' => true,
-                'valid' => true,
-                'unique' => 'users'
-            ),
-            'password' => array(
-                'required' => true,
-                'min' => 6,
-                'upper' => true
-            ),
-            'repeat_password' => array(
-                'required' => true,
-                'matches' => 'password'
-            )
-        ));
-        if ($validation->passed()) {
-            $user = new user();
-            $salt = hash::salt(32);
-            $code = hash::salt(32);
-            
-            try {
-                $user->create(array(
-                    'username' => input::get('username'),
-                    'password' => hash::make(input::get('password'), $salt),
-                    'salt' => $salt,
-                    'email' => input::get('email'),
-                    'verification_token' => $code,
-                    'verified' => 0
-                ));
-
-                $result = $user->find(input::get('username'));
-                if ($result) {
-                $results = $user->data();
-                $saltcode = $results->verification_token;
-                $user->update($results->id, array(
-                    'password' => hash::make(input::get('password'), $results->salt),
-                    'verification_token' => hash::make('code', $saltcode) //because retrieving salt from the database changes it argh                 
-                ));
-                $code = hash::make('code', $saltcode);
-            }
-        
-                if ($validation->send_email(input::get('email'), $code)) {
-                    echo 'Please check your email';
-                }
-            } catch (Exception $e) {
-                die ($e->getMessage());
-            }
-
-            
-        } else {
-            foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
-            }
-        }
-    }
+if (session::exists('email')) {
+    echo session::flash('email');
+}
+if (session::exists('error')) {
+    echo session::flash('error');
 }
 ?>
-
-<form action="" method="post">
+<html>
+<form action="functions/register_user.php" method="post">
     <div class="field">
     <label for="username">Username</label>
     <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username'))?>" autocomplete="off">
@@ -93,3 +32,4 @@ if (Input::exists()) {
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
     <input type="submit" value="Register"> 
 </form>
+</html>

@@ -19,12 +19,14 @@
         )
 
         );
+        
 
     spl_autoload_register('myAutoLoader'); //automatically loads a class whenever it is instantiated
     function myAutoLoader($classname){
+        $root = $_SERVER['DOCUMENT_ROOT']. "/" . "Camagru/";
         $path = "classes/";
         $extension = ".class.php";
-        $fullpath = $path . $classname . $extension;
+        $fullpath = $root . $path . $classname . $extension;
 
         if (!file_exists($fullpath)){
             return false;
