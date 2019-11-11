@@ -16,6 +16,8 @@ class Dbh {
             
 
         } catch (PDOException $e){ //catches the exception thrown by the PDO constructor
+            require 'includes/install.php';
+            die();
             echo "Connection failed: ". $e->getMessage();
         }      
     }

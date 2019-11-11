@@ -17,7 +17,7 @@
          $sql = "CREATE DATABASE IF NOT EXISTS db";
          
          if (mysqli_query($conn, $sql)) {
-         //   echo "Database created successfully<br/>";
+            echo "Database created successfully, please refresh<br/>";
          } else {
             echo "Error creating database: " . mysqli_error($conn);
          }
@@ -31,8 +31,9 @@
          $sql = "create table IF NOT EXISTS images(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
             user_id INT(20),
-            image_src VARCHAR(255),
-            name VARCHAR(20)
+            filename VARCHAR(255),
+            name VARCHAR(20),
+            date_uploaded DATETIME
             )";  
             if(mysqli_query($conn, $sql)){  
             //   echo "images created successfully<br/>";  

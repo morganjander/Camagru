@@ -15,4 +15,9 @@ class image {
             throw new Exception('Problem adding image');
         }
     }
+
+    public function display_all() {
+            $data = $this->_db->get('images', array('id', '>', 0));
+        }
+
 }

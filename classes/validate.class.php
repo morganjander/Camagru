@@ -42,7 +42,7 @@ class validate {
                         break;
                         case 'upper':
                             if (ctype_lower($value)) {
-                               $this->addError("{$item} must contain uppercase letters");
+                               $this->addError("{$item} must contain uppercase letters or numbers");
                             }
                         break;
                         case 'valid':

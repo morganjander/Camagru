@@ -1,11 +1,15 @@
 
 <?php
     require_once 'init.php';
-    require_once 'includes/install.php';
+    
+    $user = new user();
+    
     if (session::exists('verified')) {
         echo session::flash('verified');
     }
-    $user = new user();
+    if (session::exists('error')) {
+        echo session::flash('error');
+    }
     if ($user->isLoggedIn()) {
     ?>
     <p>Hello <a href="profile.php"><?php echo escape($user->data()->username);?> </a></p>

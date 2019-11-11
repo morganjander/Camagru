@@ -9,6 +9,9 @@ class input {
             case 'get':
                 return (!empty($_GET)) ? true : false;
             break;
+            case 'files':
+                return (!empty($_FILES)) ? true : false;
+            break;
             default:
             return false;
             break;
@@ -21,6 +24,9 @@ class input {
         }
         else if (isset($_GET[$item])) {
             return $_GET[$item]; 
+        }
+        else if (isset($_FILES[$item])) {
+            return $_FILES[$item]; 
         }
         return '';
     }
