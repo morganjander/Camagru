@@ -1,7 +1,6 @@
 
 <?php
     require_once 'init.php';
-    
     $user = new user();
     
     if (session::exists('verified')) {

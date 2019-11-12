@@ -45,7 +45,8 @@
          $sql = "create table IF NOT EXISTS comments(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
             img_id INT(20),
-            comment_text VARCHAR(255)
+            comment_text VARCHAR(255),
+            username VARCHAR(20)
             )";  
          
          if(mysqli_query($conn, $sql)){  
