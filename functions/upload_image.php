@@ -10,15 +10,16 @@ if (Input::exists()) {
             $fileName = basename($_FILES["file"]["name"]);
             $targetFilePath = $targetDir . $fileName;
             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            $timestamp = strtotime('now');
             if(in_array($fileType, $allowTypes)){
                 if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
                 
                     try {
                         $image->upload(array(// Insert image file name into database
-                            'user_id' => session::get('user'),
                             'filename' => $fileName,
-                            'name' => 'temp',
-                            'date_uploaded' => date("Y/m/d")
+                            'username' => session::get('user'),
+                            'date_uploaded' => date('m/d/Y h:i:sa', $timestamp),
+                            'likes' => 0
                         ));
                         session::flash('upload success', 'Upload successful');
                         redirect::to('../profile.php');

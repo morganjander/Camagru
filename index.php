@@ -10,11 +10,15 @@
     if (session::exists('error')) {
         echo session::flash('error');
     }
+    if (session::exists('login to like')) {
+        echo session::flash('login to like');
+    }
     if ($user->isLoggedIn()) {
+        print_r($_SESSION);
     ?>
     <p>Hello <a href="profile.php"><?php echo escape($user->data()->username);?> </a></p>
     <ul>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="functions/logout_user.php">Logout</a></li>
     </ul>
     
     <?php
@@ -23,6 +27,8 @@
 
     } else {
         echo '<p><a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';
+        $image = new image();
+        $image->display_all();
     }
     
 

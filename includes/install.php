@@ -30,10 +30,11 @@
   
          $sql = "create table IF NOT EXISTS images(
             id INT AUTO_INCREMENT NOT NULL,primary key (id),
-            user_id INT(20),
             filename VARCHAR(255),
-            name VARCHAR(20),
-            date_uploaded DATETIME
+            username VARCHAR(20),
+            date_uploaded VARCHAR(255),
+            likes INT(20),
+            user_liked VARCHAR(20)
             )";  
             if(mysqli_query($conn, $sql)){  
             //   echo "images created successfully<br/>";  

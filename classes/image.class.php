@@ -16,13 +16,43 @@ class image {
         }
     }
 
+    public function add_like ($filename, $user) {
+        $data = $this->_db->get('images', array('filename', '=', $filename));
+        if($data->count()) {
+            $this->_data = $data->first();
+            $likes = $this->_data->likes;
+            $userliked = $this->_data->user_liked;
+            if ($userliked === $user) {
+                $likes--;
+                $user = null;
+            } else {
+                $likes++;
+            }
+            $fields = array (
+                'likes' => $likes,
+                'user_liked' => $user
+            );
+        }
+        $id = $this->_data->id;
+
+        if (!$this->_db->update('images', $id, $fields)) {
+            throw new Exception('Problem updating likes');
+        }
+    }
+
     public function display_all() {
-        $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded');
+        $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded ASC');
         if($data->count()){
 
             foreach ($data->results() as $data) {
                 $imageURL = $data->filename;
-                echo "<img src='uploads/".$imageURL."'/>";
+                $uploader = $data->username;
+                $likes = $data->likes;
+                echo "<div class = 'box column is-5 is-offset-one-quarter'>
+                <img src='uploads/".$imageURL."'/>
+                <br />
+                <h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'>$uploader $likes  <a href='functions/add_like.php?image=".$imageURL."&user=".session::get('user')."'><img width=35 height=30 src='images/like_icon.png'/></a></p></h4>
+                </div>";
             }
             
          } else{ 
