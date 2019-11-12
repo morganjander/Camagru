@@ -13,6 +13,7 @@ if ($user->isLoggedIn()) {
     <ul>
     <li><a href="update.php">Change Username</a></li>
     <li><a href="password_reset.php">Change Password</a></li>
+    <li><a href="email_preference.php">Update Email Preferences</a></li>
     <li><a href="functions/logout_user.php">Logout</a></li>
     </ul>
     <html>
@@ -29,12 +30,13 @@ if ($user->isLoggedIn()) {
                         <p class="control has-text-centered">
                             <input type="submit" name="submit" class="button" style="background-color:#f35588" value="Upload Now"/>
                             <input type="hidden" name="token" value="<?php echo token::generate();?>">
-                            <!-- <button type ="file" name="upload_now" class="button is-primary is-outlined">Upload now</button> -->
+                            
                         </p>
                     </div>
                 </div>
             </form>
-    </html>
+
+
     <?php
 
     } else {

@@ -37,7 +37,8 @@ if (Input::exists()) {
                     'salt' => $salt,
                     'email' => input::get('email'),
                     'verification_token' => $code,
-                    'verified' => 0
+                    'verified' => 0,
+                    'comment_email' => 1
                 ));
 
                 $result = $user->find(input::get('username'));

@@ -61,7 +61,8 @@
             salt VARCHAR(255),
             email VARCHAR(255),
             verification_token VARCHAR(255),
-            verified INT (11)
+            verified INT (11),
+            comment_email INT (11)
             )";
          
          if(mysqli_query($conn, $sql)){  

@@ -14,7 +14,6 @@
         echo session::flash('login to like');
     }
     if ($user->isLoggedIn()) {
-        print_r($_SESSION);
     ?>
     <p>Hello <a href="profile.php"><?php echo escape($user->data()->username);?> </a></p>
     <ul>
