@@ -17,7 +17,16 @@ class image {
     }
 
     public function display_all() {
-            $data = $this->_db->get('images', array('id', '>', 0));
-        }
+        $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded');
+        if($data->count()){
 
+            foreach ($data->results() as $data) {
+                $imageURL = $data->filename;
+                echo "<img src='uploads/".$imageURL."'/>";
+            }
+            
+         } else{ 
+            ?><p>No image(s) found...</p> <?php
+         }
+    }
 }

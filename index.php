@@ -16,7 +16,10 @@
     <ul>
     <li><a href="logout.php">Logout</a></li>
     </ul>
+    
     <?php
+    $image = new image();
+    $image->display_all();
 
     } else {
         echo '<p><a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';

@@ -1,5 +1,8 @@
 <?php
 require_once 'init.php';
+if (session::exists('upload success')) {
+    echo session::flash('upload success');
+}
 if (session::exists('updated')) {
     echo session::flash('updated');
 }

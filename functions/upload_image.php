@@ -20,7 +20,8 @@ if (Input::exists()) {
                             'name' => 'temp',
                             'date_uploaded' => date("Y/m/d")
                         ));
-                        echo 'inserted';
+                        session::flash('upload success', 'Upload successful');
+                        redirect::to('../profile.php');
                     }
                     catch (Exception $e) {
                         die ($e->getMessage());

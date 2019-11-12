@@ -51,7 +51,7 @@ class Dbh {
 
     }
 
-    public function action($action, $table, $where = array()) {
+    public function action($action, $table, $where = array(), $by = null) {
         if(count($where) === 3) {//need field, operator, value
             $operators = array('=', '>', '<', '>=', '<=');
 
@@ -60,7 +60,12 @@ class Dbh {
             $value = $where[2];
 
             if (in_array($operator, $operators)) {
-                $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+                if ($by) {
+                    $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ORDER BY $by?";
+                } else {
+
+                    $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+                }
                 if (!$this->query($sql, array($value))->error()) {
                     return $this;
                 }
@@ -80,6 +85,9 @@ class Dbh {
 
     public function get($table, $where) {
         return $this->action('SELECT *', $table, $where);
+    }
+    public function get_all($table, $where, $orderby) {
+        return $this->action('SELECT *', $table, $where, $orderby);
     }
 
     public function delete($table, $where) {
