@@ -72,8 +72,13 @@ class validate {
         return $this->_passed;
     }
 
-    public function send_email($to, $code, $reset = null) {
-        if (!$reset) {
+    public function send_email($to, $code = null, $reset = null, $user) {
+        if (!$code) {
+            $str = "";
+            $str .= "Hi, {$user} has commented on your picture.";
+            $subject  = 'Camagru Comment Notification';
+        }
+        else if (!$reset && !$user) {
 
             $link = "http://localhost/Camagru/verify.php?code=" . $code . "&user=" . $to;
             $str = "";

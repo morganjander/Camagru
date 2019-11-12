@@ -1,15 +1,19 @@
 <?php
     require_once 'init.php';
-    print_r($_SESSION);
     $user = new user();
     if ($user->isLoggedIn()) {
         $image = new image();
         $filename = input::get('image');
-        $user = input::get('user');
+        $name = input::get('user');
         if (input::get('comment')) {
                 $text = input::get('comment');
                 try {
-                    $image->add_comment($filename, $user, $text);
+                    $image->add_comment($filename, $name, $text);
+                    if ($user->data()->comment_email) {
+                        $validate = new validate();
+                        $validate->send_email($user->data()->email, null, null, $name);
+
+                    }
                     redirect::to('index.php');
                 } catch (Exception $e) {
                     die ($e->getMessage());
