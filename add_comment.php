@@ -4,7 +4,7 @@
     if ($user->isLoggedIn()) {
         $image = new image();
         $filename = input::get('image');
-        $name = input::get('user');
+        $name = $user->data()->username;
         if (input::get('comment')) {
                 $text = input::get('comment');
                 try {

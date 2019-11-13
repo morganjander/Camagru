@@ -11,9 +11,9 @@ if ($user->isLoggedIn()) {
     ?>
     <p>Hello <a href="#"><?php echo escape($user->data()->username);?> </a></p>
     <ul>
-    <li><a href="update.php">Change Username</a></li>
+    <li><a href="update_page.php">Change Username</a></li>
     <li><a href="password_reset.php">Change Password</a></li>
-    <li><a href="email_preference.php">Update Email Preferences</a></li>
+    <li><a href="update_email_preference.php">Update Email Preferences</a></li>
     <li><a href="functions/logout_user.php">Logout</a></li>
     </ul>
     <html>

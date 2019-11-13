@@ -1,7 +1,9 @@
 
 <?php
     require_once 'init.php';
+    include 'functions/display_all_photos.php';
     $user = new user();
+    display_all_photos();
     
     if (session::exists('verified')) {
         echo session::flash('verified');
@@ -14,19 +16,16 @@
     }
     if ($user->isLoggedIn()) {
     ?>
-    <p>Hello <a href="profile.php"><?php echo escape($user->data()->username);?> </a></p>
+    <p>Hello <a href="profile_page.php"><?php echo escape($user->data()->username);?> </a></p>
     <ul>
     <li><a href="functions/logout_user.php">Logout</a></li>
     </ul>
     
     <?php
-    $image = new image();
-    $image->display_all();
+    
 
     } else {
-        echo '<p><a href="login.php">Log in</a> or <a href="register.php">Register</a></p>';
-        $image = new image();
-        $image->display_all();
+        echo '<p><a href="login_page.php">Log in</a> or <a href="register_page.php">Register</a></p>';
     }
     
 

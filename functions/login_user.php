@@ -30,7 +30,7 @@ if (token::check(input::get('token'))) {
     } else {
         $error = $validation->errors();
         session::flash('loginerror', $error[0] . '<br>');
-        redirect::to('../login.php');
+        redirect::to('../login_page.php');
     }
 }
 

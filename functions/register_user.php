@@ -52,9 +52,9 @@ if (Input::exists()) {
                 $code = hash::make('code', $saltcode);
             }
         
-                if ($validation->send_email(input::get('email'), $code)) {
+                if ($validation->send_email(input::get('email'), $code, null, null)) {
                     session::flash('email', 'Please check your email');
-                    redirect::to('../register.php');
+                    redirect::to('../register_page.php');
                 }
             } catch (Exception $e) {
                 die ($e->getMessage());
@@ -64,7 +64,7 @@ if (Input::exists()) {
         } else {
             $error = $validation->errors();
             session::flash('error', $error[0] . '<br>');
-            redirect::to('../register.php');
+            redirect::to('../register_page.php');
         }
     }
 }

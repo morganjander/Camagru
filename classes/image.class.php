@@ -56,38 +56,16 @@ class image {
             throw new Exception('Problem adding comment');
         }
     }
-
-
-    public function display_all() {
+    
+    public function get_all_photos() {
         $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded ASC');
-        
-        if($data->count()){
+        return $data;
 
-            foreach ($data->results() as $data) {
-                $imageURL = $data->filename;
-                $uploader = $data->username;
-                $id = $data->id;
-                $likes = $data->likes;
-                $text = "";
-                $comments = $this->_db->get('comments', array('img_id', '=', $id));
-                if ($comments->results()) {
-                    foreach ($comments->results() as $comment) {
-                        $name =  $comment->username;
-                        $text .= $name . ": ". $comment->comment_text . "<br>";
-                    }
-                }
-                echo "<div class = 'box column is-5 is-offset-one-quarter'>
-                <img src='uploads/".$imageURL."'/>
-                <br />
-                <h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'>$uploader $likes <a href='functions/add_like.php?image=".$imageURL."&user=".$name."'><img width=35 height=30 src='images/like_icon.png'/></a></p></h4>
-                <h4 class='subtitle is-5 has-text-left'><a href='add_comment.php?image=".$imageURL."&user=".$name."'><img width=35 height=30 src='images/comment_icon.png'/></a></h4>
-                <h4 class='subtitle is-7 has-text-left'><p>$text</p></h4>
-                </div>";
-                
-            }
-            
-         } else{ 
-            ?><p>No image(s) found...</p> <?php
-         }
+    }
+
+    public function get_all_comments($id) {
+
+        $comments = $this->_db->get('comments', array('img_id', '=', $id));
+        return $comments;
     }
 }
