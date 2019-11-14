@@ -1,5 +1,11 @@
 <?php
 require_once 'init.php';
+include_once("includes/footer.html");
+$user = new user();
+    if (!$user->isLoggedIn()){
+        session::flash('login to like', 'Please login or register to like or comment on photos');
+        redirect::to('index.php');
+    }
 ?>
 <br>
 <br>

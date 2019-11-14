@@ -20,6 +20,7 @@
     }
     $user = new user();
     if ($user->isLoggedIn()) {
+    include_once("includes/footer.html");
     ?>
     <p>Hello <a href="profile_page.php"><?php echo escape($user->data()->username);?> </a></p>
     <?php

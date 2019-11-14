@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/footer.html");
 $user = new user();
 ?>
 <br>

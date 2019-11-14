@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/footer.html");
 if (token::check(input::get('token'))) {
     $validate = new validate();
     $validation = $validate->check($_POST, array(

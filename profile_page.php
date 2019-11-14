@@ -17,6 +17,7 @@ if (session::exists('updated')) {
 }
 $user = new user();
 if ($user->isLoggedIn()) {
+include_once("includes/footer.html");
     ?>
     <br>
     <br>
