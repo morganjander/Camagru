@@ -1,6 +1,7 @@
 <?php
     session_start();
-    include_once("includes/header_template.html");
+    include_once("includes/header.html");
+    include_once("includes/footer.html");
     $GLOBALS['config'] = array(
         'mysql' => array(
             'host' => '127.0.0.1',

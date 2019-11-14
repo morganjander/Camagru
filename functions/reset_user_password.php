@@ -36,13 +36,8 @@ if (Input::exists()) {
                         $user->update($results->id, array(
                         'password' => hash::make(input::get('password'), $results->salt)
                         ));
-                        session::flash('updated', 'Password updated successfully');
-                        if ($user->isLoggedIn()) {
-                            redirect::to('../profile.php');
-                        } else {
-                            redirect::to('../login.php');
-                        }
-                        
+                        session::flash('password_updated', 'Password updated successfully');
+                        redirect::to('../password_reset_page.php');                        
                         
                 } catch (Exception $e) {
                     die ($e->getMessage());
@@ -52,7 +47,7 @@ if (Input::exists()) {
             } else {
                 $error = $validation->errors();
                 session::flash('reset_error', $error[0] . '<br>');
-                redirect::to('../password_reset.php');
+                redirect::to('../password_reset_page.php');
             }
 
     }

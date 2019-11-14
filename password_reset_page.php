@@ -1,13 +1,20 @@
 <?php
 require_once 'init.php';
+?>
+<br>
+<br>
+<br> <?php
 if (session::exists('reset_error')) {
     echo session::flash('reset_error');
 }
-
+if (session::exists('password_updated')) {
+    echo session::flash('password_updated');
+}
 ?>
-
+<br>
 <form action="functions/reset_user_password.php" method="post">
-    
+<div class = "box column is-7 is-offset-one-quarter has-text-centered">
+<h3>Reset your password</h3>     
     <div class="field">
     <label for="password">Choose a new password</label>
     <input type="password" name="password" id="password">
@@ -20,4 +27,5 @@ if (session::exists('reset_error')) {
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
     <input type="submit" value="Reset Password"> 
+</div>
 </form>

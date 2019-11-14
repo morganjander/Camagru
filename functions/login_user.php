@@ -18,13 +18,13 @@ if (token::check(input::get('token'))) {
         }
 
         if ($login && $verified) {
-            redirect::to('../profile.php');
+            redirect::to('../profile_page.php');
         } else if($login && !$verified) {
             session::flash('notverified', 'Please verify your email first');
-            redirect::to('../login.php');
+            redirect::to('../login_page.php');
         } else {
             session::flash('notcorrect', 'Incorrect login details');
-            redirect::to('../login.php');
+            redirect::to('../login_page.php');
         }
 
     } else {

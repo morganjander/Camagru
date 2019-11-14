@@ -1,6 +1,9 @@
 <?php
-
 require_once 'init.php';
+?>
+<br>
+<br>
+<br> <?php
 if (session::exists('updated')) {
     echo session::flash('updated');
 }
@@ -15,10 +18,18 @@ if (session::exists('loginerror')) {
 }
 
 ?>
+
+
+
+<br>
+
+<html>
 <form action="functions/login_user.php" method="post">
+<div class = "box column is-7 is-offset-one-quarter has-text-centered">
+<h3>Enter your details to login</h3> 
     <div class="field">
     <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username'))?>" autocomplete="off">
+    <input type="text" name="username" id="username">
     </div>
 
     <div class="field">
@@ -27,5 +38,8 @@ if (session::exists('loginerror')) {
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Log in"> <a href="forgot_password.php">Forgot Password?</a>
+    <input type="submit" value="Log in" class="button" style="background-color:#f35588"> <a href="forgot_password.php">Forgot Password?</a>
+</div>
 </form>
+</html>
+

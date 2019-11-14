@@ -15,6 +15,6 @@
         
 
     } else {
-        session::flash('login to like', 'Please login or register to like photos');
+        session::flash('login to like', 'Please login or register to like or comment on photos');
         redirect::to('../index.php');
     }

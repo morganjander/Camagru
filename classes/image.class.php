@@ -16,6 +16,12 @@ class image {
         }
     }
 
+    public function delete($id) {
+        if(!$this->_db->delete('images', array('filename', '=', $id))) {
+            throw new Exception('Problem deleting image');
+        }
+    }
+
     public function add_like ($filename, $user) {
         $data = $this->_db->get('images', array('filename', '=', $filename));
         if($data->count()) {
@@ -59,6 +65,12 @@ class image {
     
     public function get_all_photos() {
         $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded ASC');
+        return $data;
+
+    }
+
+    public function get_all_user_photos($user) {
+        $data = $this->_db->get('images', array('username', '=', $user), 'date_uploaded ASC');
         return $data;
 
     }

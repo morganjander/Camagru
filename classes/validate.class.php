@@ -80,7 +80,7 @@ class validate {
         }
         else if (!$reset && !$user) {
 
-            $link = "http://localhost/Camagru/verify.php?code=" . $code . "&user=" . $to;
+            $link = "http://localhost/Camagru/functions/verify_user.php?code=" . $code . "&user=" . $to;
             $str = "";
             $str .= "Hi, Please click on ";
             $str .= "<a href='{$link}'>this link</a>";
@@ -88,7 +88,7 @@ class validate {
        
             $subject  = 'Verify Camagru';
     } else {
-            $link = "http://localhost/Camagru/password_reset.php?code=" . $code . "&user=" . $to;
+            $link = "http://localhost/Camagru/password_reset_page.php?code=" . $code . "&user=" . $to;
             $str = "";
             $str .= "Hi, Please click on ";
             $str .= "<a href='{$link}'>this link</a>";

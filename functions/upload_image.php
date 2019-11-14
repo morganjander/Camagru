@@ -21,8 +21,8 @@ if (Input::exists()) {
                             'date_uploaded' => date('m/d/Y h:i:sa', $timestamp),
                             'likes' => 0
                         ));
-                        session::flash('upload success', 'Upload successful');
-                        redirect::to('../profile.php');
+                        session::flash('image upload success', 'Image upload successful');
+                        redirect::to('../upload_page.php');
                     }
                     catch (Exception $e) {
                         die ($e->getMessage());

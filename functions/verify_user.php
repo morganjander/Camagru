@@ -1,5 +1,5 @@
 <?php
-require_once 'init.php';
+require_once '../init.php';
 if (empty($_GET['code']) || empty($_GET['user'])){
     redirect::to('index.php');
 }
@@ -15,7 +15,7 @@ else {
                 'verified' => 1
             ));
             session::flash('verified', 'Thank you, your account has been verified');
-            redirect::to('index.php');
+            redirect::to('../index.php');
         }
         else {
             echo "uh-oh";

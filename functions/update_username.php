@@ -2,7 +2,7 @@
     require_once '../init.php';
     $user = new user();
     if (!$user->isLoggedIn()) {
-        redirect::to('index.php');
+        redirect::to('../index.php');
     }
     if (Input::exists()) {
         if (token::check(input::get('token'))) {
@@ -19,7 +19,9 @@
                     $user->update($user->data()->id, array(
                         'username' => input::get('username')
                     ));
-                    echo "Details updated successfully";
+                    session::put('user', input::get('username'));
+                    session::flash('updated', 'Username updated succesfully');
+                    redirect::to('../update_page.php');
                 } catch (Exception $e) {
                     die ($e->getMessage());
                 }
