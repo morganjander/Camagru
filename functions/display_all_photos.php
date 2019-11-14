@@ -25,9 +25,11 @@ function display_all_photos($user = null){
         
         
             echo "<div class = 'box column is-5 is-offset-one-quarter'>
-            <h4 class='subtitle is-5 has-text-left'><p style='color:#f35588'>$uploader</p></h4>
-            <h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'><a href='functions/delete_image.php?image=".$imageURL."'><img width=35 height=30 src='images/delete_icon.png'/></a></p></h4>
-            <img src='uploads/".$imageURL."'/>
+            <h4 class='subtitle is-5 has-text-left'><p style='color:#f35588'>$uploader</p></h4>";
+            if ($user) {
+            echo "<h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'><a href='functions/delete_image.php?image=".$imageURL."'><img width=35 height=30 src='images/delete_icon.png'/></a></p></h4>";
+            }
+            echo "<img src='uploads/".$imageURL."'/>
             <br />
             <h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'>$likes <a href='functions/add_like.php?image=".$imageURL."'><img width=35 height=30 src='images/like_icon.png'/></a></p></h4>
             <h4 class='subtitle is-5 has-text-left'><a href='add_comment.php?image=".$imageURL."'><img width=35 height=30 src='images/comment_icon.png'/></a></h4>

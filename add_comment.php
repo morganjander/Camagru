@@ -1,7 +1,10 @@
 <?php
     require_once 'init.php';
     $user = new user();
-    if ($user->isLoggedIn()) {
+    if (!$user->isLoggedIn()){
+        session::flash('login to like', 'Please login or register to like or comment on photos');
+        redirect::to('index.php');
+    } else {
         $image = new image();
         $filename = input::get('image');
         $name = $user->data()->username;
@@ -18,7 +21,7 @@
                 } catch (Exception $e) {
                     die ($e->getMessage());
                 }
-        }
+            }
 
         echo "<div class = 'box column is-5 is-offset-one-quarter'>
                 <img src='uploads/".$filename."'/>
@@ -31,12 +34,5 @@
     <textarea name="comment" rows="5" cols="80"></textarea>
 </form>
 </div>
-<?php
-
-
-}
-else {
-    session::flash('login to like', 'Please login or register to like or comment on photos');
-    redirect::to('index.php');
-}
-?>
+<?php 
+ }
