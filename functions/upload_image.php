@@ -6,7 +6,6 @@ if (Input::exists()) {
             $image =  new image();
             $allowTypes = array('jpg','png','jpeg','gif','pdf');
             $targetDir = "../uploads/";
-            print_r($_FILES);
             $fileName = basename($_FILES["file"]["name"]);
             $targetFilePath = $targetDir . $fileName;
             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
