@@ -64,13 +64,13 @@ class image {
     }
     
     public function get_all_photos() {
-        $data = $this->_db->get('images', array('id', '>', 0), 'date_uploaded ASC');
+        $data = $this->_db->get_all('images', array('id', '>', 0), 'date_uploaded DESC');
         return $data;
 
     }
 
     public function get_all_user_photos($user) {
-        $data = $this->_db->get('images', array('username', '=', $user), 'date_uploaded ASC');
+        $data = $this->_db->get('images', array('username', '=', $user), 'date_uploaded DESC');
         return $data;
 
     }

@@ -61,7 +61,7 @@ class Dbh {
 
             if (in_array($operator, $operators)) {
                 if ($by) {
-                    $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ORDER BY {$by} ?";
+                    $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ? ORDER BY {$by}";
                 } else {
 
                     $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
