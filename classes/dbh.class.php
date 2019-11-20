@@ -63,7 +63,6 @@ class Dbh {
                 if ($by) {
                     $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ? ORDER BY {$by}";
                 } else {
-
                     $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
                 }
                 if (!$this->query($sql, array($value))->error()) {

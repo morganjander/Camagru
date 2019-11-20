@@ -1,11 +1,9 @@
 <?php
 require_once 'init.php';
-include_once("includes/footer.html");
 $user = new user();
-    if (!$user->isLoggedIn()){
-        session::flash('login to like', 'Please login or register to like or comment on photos');
-        redirect::to('index.php');
-    }
+if (!$user->isLoggedIn() && (empty($_GET['code']) || empty($_GET['user'])) && !session::exists('password_updated')){
+    redirect::to('index.php');
+}
 ?>
 <br>
 <br>
@@ -32,6 +30,8 @@ if (session::exists('password_updated')) {
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Reset Password"> 
+    <input type="hidden" name="user" value="<?php echo $_GET['user'];?>">
+    <input type="hidden" name="code" value="<?php echo $_GET['code'];?>">
+    <input type="submit" style="background-color:#f35588" value="Reset Password"> 
 </div>
 </form>

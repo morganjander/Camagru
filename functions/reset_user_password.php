@@ -2,17 +2,14 @@
 require_once '../init.php';
 $user = new user();
 
-if (!$user->isLoggedIn() && (empty($_GET['code']) || empty($_GET['user']))){
-    redirect::to('../index.php');
-}
-else if (!$user->isLoggedIn()){
-    $result = $user->find($_GET['user']);
+if (!$user->isLoggedIn()){
+    $result = $user->find($_POST['user']);
     if ($result) {
         $results = $user->data();
         $token = $results->verification_token;
-        if ($token != $_GET['code']) {
-            redirect::to('../index.php');
-    }
+       if ($token != $_POST['code']) {
+           redirect::to('../index.php');
+   }
 }
 } else {
     $results = $user->data();
@@ -51,4 +48,4 @@ if (Input::exists()) {
             }
 
     }
-}
+ }

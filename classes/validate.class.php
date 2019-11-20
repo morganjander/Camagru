@@ -73,7 +73,7 @@ class validate {
     }
 
     public function send_email($to, $code = null, $reset = null, $user) {
-        if (!$code) {
+        if (!$code && !$reset) {
             $str = "";
             $str .= "Hi, {$user} has commented on your picture.";
             $subject  = 'Camagru Comment Notification';

@@ -1,6 +1,9 @@
 <?php
 require_once 'init.php';
-include_once("includes/footer.html");
+?>
+<br>
+<br>
+<br> <?php
 if (token::check(input::get('token'))) {
     $validate = new validate();
     $validation = $validate->check($_POST, array(
@@ -15,7 +18,7 @@ if ($validation->passed()) {
             if (!$verified) {
                 echo "Please verify your email first";
             } else {
-                if ($validation->send_email(input::get('email'), $user->data()->verification_token, 1)) {
+                if ($validation->send_email(input::get('email'), $user->data()->verification_token, 1, null)) {
                     echo 'Please check your email';
                 }
             }

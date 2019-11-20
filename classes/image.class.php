@@ -64,15 +64,19 @@ class image {
     }
     
     public function get_all_photos() {
-        $data = $this->_db->get_all('images', array('id', '>', 0), 'date_uploaded DESC');
+        $data = $this->_db->get_all('images', array('id', '>', 0), 'id DESC');
         return $data;
 
     }
 
     public function get_all_user_photos($user) {
-        $data = $this->_db->get('images', array('username', '=', $user), 'date_uploaded DESC');
+        $data = $this->_db->get_all('images', array('username', '=', $user), 'id DESC');
         return $data;
 
+    }
+
+    public function get_photo($filename) {
+        $photo = $this->_db->get('images', array('filename', '=', $filename));
     }
 
     public function get_all_comments($id) {

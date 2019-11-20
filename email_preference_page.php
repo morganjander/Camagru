@@ -1,6 +1,10 @@
 <?php
     require_once 'init.php';
     include_once("includes/footer.html");
+    ?>
+    <br>
+    <br>
+    <br> <?php
     $user = new user();
     if (!$user->isLoggedIn()) {
         redirect::to('index.php');

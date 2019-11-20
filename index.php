@@ -28,6 +28,9 @@
         echo '<p><a href="login_page.php">Log in</a> or <a href="register_page.php">Register</a></p>';
     }
     display_all_photos();
+    ?>
+    <br>
+    <br>
     
 
 
