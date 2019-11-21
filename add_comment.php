@@ -6,16 +6,21 @@
         session::flash('login to like', 'Please login or register to like or comment on photos');
         redirect::to('index.php');
     } else {
-        $image = new image();
         $filename = input::get('image');
+        $image = new image();
+        $owner = $image->get_photo($filename)->first()->username;
         $name = $user->data()->username;
+        $recipient = new user();
+        if ($recipient->find($owner)) {
+            $email = $recipient->data()->email;
+        }
         if (input::get('comment')) {
                 $text = input::get('comment');
                 try {
                     $image->add_comment($filename, $name, $text);
                     if ($user->data()->comment_email) {
                         $validate = new validate();
-                        $validate->send_email($user->data()->email, null, null, $name);
+                        $validate->send_email($email, null, null, $name);
 
                     }
                     redirect::to('index.php');

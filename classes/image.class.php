@@ -77,6 +77,7 @@ class image {
 
     public function get_photo($filename) {
         $photo = $this->_db->get('images', array('filename', '=', $filename));
+        return $photo;
     }
 
     public function get_all_comments($id) {
