@@ -31,7 +31,7 @@
 
 <form action="" method="post">
     <div class="field">
-    <label>Would you like to receive email notifications?</label>
+    <label>Would you like to receive comment email notifications?</label>
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">

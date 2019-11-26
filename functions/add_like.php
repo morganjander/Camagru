@@ -5,7 +5,7 @@
     if ($user->isLoggedIn()) {
         $image = new image();
         $filename = input::get('image');
-        $user = input::get('user');
+        $user = $_SESSION['user'];
         try {
             $image->add_like($filename, $user);
             redirect::to('../index.php');

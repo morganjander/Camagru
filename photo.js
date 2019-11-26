@@ -15,9 +15,11 @@
     document.getElementById("snap").addEventListener("click", function() {
         context.drawImage(video, 0, 0, 400, 300);
         image.setAttribute('value', canvas.toDataURL());
+        
     });
 
     document.getElementById("submitphoto").addEventListener("click", function() {
+        
             
     });
 

@@ -28,6 +28,7 @@ function display_all_photos($user = null){
             <h4 class='subtitle is-5 has-text-left'><p style='color:#f35588'>$uploader</p></h4>";
             if ($user) {
             echo "<h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'><a href='functions/delete_image.php?image=".$imageURL."'><img width=35 height=30 src='images/delete_icon.png'/></a></p></h4>";
+            echo "<h4 class='subtitle is-5 has-text-right'><p style='color:#f35588'><a href='edit_image_page.php?image=".$imageURL."'><img width=35 height=30 src='images/edit_icon.png'/></a></p></h4>";
             }
             echo "<img src='uploads/".$imageURL."'/>
             <br />
