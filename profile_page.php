@@ -25,6 +25,7 @@ include_once("includes/footer.html");
     <ul>
     <li><a href="update_page.php">Change Username</a></li>
     <li><a href="password_reset_page.php">Change Password</a></li>
+    <li><a href="email_reset_page.php">Change Email</a></li>
     <li><a href="email_preference_page.php">Update Email Preferences</a></li>
     </ul>
 <?php

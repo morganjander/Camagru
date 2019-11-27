@@ -9,10 +9,6 @@
             'dbname' => 'db', 
             'charset'=> 'utf8mb4'
         ),
-        'remember' => array(
-            'cookie_name' => 'hash',
-            'cookie_expiry' => 10800
-        ),
         'session' => array(
             'session_name' => 'user',
             'token_name' => 'token'

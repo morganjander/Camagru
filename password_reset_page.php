@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/footer.html");
 $user = new user();
 if (!$user->isLoggedIn() && (empty($_GET['code']) || empty($_GET['user'])) && !session::exists('password_updated')){
     redirect::to('index.php');

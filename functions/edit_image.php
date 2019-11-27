@@ -5,7 +5,7 @@ require_once '../init.php';
 <br>
 <br>
 <?php
-print_r($_POST);
+
 if (input::exists('post')) {
     if ($_POST['Yes']) {
         $image = session::get('old_image');

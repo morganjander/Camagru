@@ -14,7 +14,7 @@ else {
             $user->update($results->id, array(
                 'verified' => 1
             ));
-            session::flash('verified', 'Thank you, your account has been verified');
+            session::flash('verified', 'Thank you, your email has been verified');
             redirect::to('../index.php');
         }
         else {
