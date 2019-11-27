@@ -54,7 +54,7 @@ class image {
             $fields = array (
                 'img_id' => $img_id,
                 'comment_text' => $text,
-                'username' => $user
+                'user_id' => $user
             );
         }
 
@@ -70,7 +70,7 @@ class image {
     }
 
     public function get_all_user_photos($user) {
-        $data = $this->_db->get_all('images', array('username', '=', $user), 'id DESC');
+        $data = $this->_db->get_all('images', array('user_id', '=', $user), 'id DESC');
         return $data;
 
     }

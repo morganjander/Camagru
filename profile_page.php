@@ -29,7 +29,7 @@ include_once("includes/footer.html");
     <li><a href="email_preference_page.php">Update Email Preferences</a></li>
     </ul>
 <?php
-display_all_photos($user->data()->username);
+display_all_photos($user->data()->id);
 ?>
     <br>
 <br>

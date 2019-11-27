@@ -35,6 +35,6 @@
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" name="yes" value="Yes">
-    <input type="submit" name="no" value="No"> 
+    <input type="submit" style="background-color:#f35588" name="yes" value="Yes">
+    <input type="submit" style="background-color:#f35588" name="no" value="No"> 
 </form>

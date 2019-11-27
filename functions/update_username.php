@@ -1,5 +1,10 @@
 <?php
     require_once '../init.php';
+    ?>
+    <br>
+    <br>
+    <br>
+    <?php
     $user = new user();
     if (!$user->isLoggedIn()) {
         redirect::to('../index.php');
@@ -16,8 +21,9 @@
             ));
             if ($validation->passed()) {
                 try {
+                    $name = htmlspecialchars(input::get('username'));
                     $user->update($user->data()->id, array(
-                        'username' => input::get('username')
+                        'username' => $name
                     ));
                     session::put('user', input::get('username'));
                     session::flash('updated', 'Username updated succesfully');
@@ -25,6 +31,10 @@
                 } catch (Exception $e) {
                     die ($e->getMessage());
                 }
+            } else {
+                $error = $validation->errors();
+                session::flash('error', $error[0] . '<br>');
+                redirect::to('../update_page.php');
             }
         }
     }

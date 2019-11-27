@@ -8,7 +8,7 @@
     } else {
         $filename = input::get('image');
         $image = new image();
-        $owner = $image->get_photo($filename)->first()->username;
+        $owner = $image->get_photo($filename)->first()->user_id;
         $name = $user->data()->username;
         $recipient = new user();
         if ($recipient->find($owner)) {
@@ -16,8 +16,9 @@
         }
         if (input::get('comment')) {
                 $text = input::get('comment');
+                $text = htmlspecialchars($text);
                 try {
-                    $image->add_comment($filename, $name, $text);
+                    $image->add_comment($filename, $owner, $text);
                     if ($user->data()->comment_email) {
                         $validate = new validate();
                         $validate->send_email($email, null, null, $name);

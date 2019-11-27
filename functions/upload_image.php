@@ -11,6 +11,10 @@ $user = new user();
 <br>
 <?php
     $image =  new image();
+    $result = $user->find(session::get('user'));
+    if ($result) {
+        $user_id = $user->data()->id;
+    }
     if (input::get('image')) {
             $allowTypes = array('jpg','png','jpeg','gif','pdf');
             $targetDir = "../uploads/";
@@ -18,13 +22,14 @@ $user = new user();
             $targetFilePath = $targetDir . $fileName;
             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
             $timestamp = strtotime('now');
+           
             if(in_array($fileType, $allowTypes)){
                 if(move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)){
                 
                     try {
                         $image->upload(array(// Insert image file name into database
                             'filename' => $fileName,
-                            'username' => session::get('user'),
+                            'user_id' => $user_id,
                             'date_uploaded' => date('m/d/Y h:i:sa', $timestamp),
                             'likes' => 0
                         ));
@@ -56,7 +61,7 @@ $user = new user();
         try {
             $image->upload(array(// Insert image file name into database
                 'filename' => $fileName,
-                'username' => session::get('user'),
+                'user_id' => $user_id,
                 'date_uploaded' => date('m/d/Y h:i:sa', $timestamp),
                 'likes' => 0
             ));

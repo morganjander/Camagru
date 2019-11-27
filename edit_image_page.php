@@ -9,7 +9,6 @@ if (!$user->isLoggedIn()){
 }
 if (session::exists('temp_image')) {
     $imageURL = session::get('temp_image');
-    session::delete('temp_image');
     $ask = 1;
 } else if (session::exists('old_image')){
     $imageURL = session::get('old_image');
@@ -20,7 +19,6 @@ if (session::exists('temp_image')) {
 <br>
 <br>
 <br> <?php
-
 echo "<div class = 'box column has-text-centered is-6 is-offset-3'>
 <img src='uploads/".$imageURL."'/>
 <br />

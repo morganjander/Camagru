@@ -9,6 +9,9 @@ $user = new user();
 if (session::exists('updated')) {
     echo session::flash('updated');
 }
+if (session::exists('error')) {
+    echo session::flash('error');
+}
 if (!$user->isLoggedIn()) {
     redirect::to('index.php');
 }
@@ -20,5 +23,5 @@ if (!$user->isLoggedIn()) {
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Update"> 
+    <input type="submit" style="background-color:#f35588" value="Update"> 
 </form> 
