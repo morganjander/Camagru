@@ -3,9 +3,34 @@ require_once '../init.php';
 ?>
 <br>
 <br>
-<br> <?php
+<br>
+<?php
+print_r($_POST);
+if (input::exists('post')) {
+    if ($_POST['Yes']) {
+        $image = session::get('old_image');
+        $dest = imagecreatefrompng('../uploads/temp.png');
+        $save = '../uploads/'. $image;
+        imagepng($dest, $save);
+        unlink('../uploads/temp.png');
+        session::delete('old_image');
+        session::delete('temp_image');
+        redirect::to('../profile_page.php');
+    }
+    if ($_POST['No']) {
+        $image = session::get('old_image');
+        $dest = imagecreatefrompng('../uploads/'. $image);
+        $save = '../uploads/'. $image;
+        imagepng($dest, $save);
+        unlink('../uploads/temp.png');
+        session::delete('temp_image');
+        redirect::to('../edit_image_page.php');
+
+    }
+}
 
 $image = input::get('image');
+$old_image = session::put('old_image', $image);
 $border = input::get('border');
 list($width, $height) = getimagesize('../uploads/'. $image);
 $new_width = 400;
@@ -38,11 +63,12 @@ $src = imagecreatefrompng('../borders/'. $border);
 
 imagecopy($dest, $src, 0, 0, 0, 0, 400, 300); 
 
-$save = '../uploads/'. $image;
+$save = '../uploads/temp.png';
 imagepng($dest, $save);
+session::put('temp_image','temp.png');
 imagedestroy($dest);
 imagedestroy($src);
-redirect::to('../profile_page.php');
+redirect::to('../edit_image_page.php');
 
 
 
