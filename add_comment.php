@@ -16,7 +16,6 @@
         }
         if (input::get('comment')) {
                 $text = input::get('comment');
-                $text = htmlspecialchars($text);
                 try {
                     $image->add_comment($filename, $owner, $text);
                     if ($user->data()->comment_email) {

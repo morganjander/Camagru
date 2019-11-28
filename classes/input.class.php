@@ -20,7 +20,8 @@ class input {
 
     public static function get($item) {
         if (isset($_POST[$item])) {
-            return $_POST[$item];
+            $text = htmlspecialchars($_POST[$item]);
+            return $text;
         }
         else if (isset($_GET[$item])) {
             return $_GET[$item]; 
