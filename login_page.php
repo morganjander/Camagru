@@ -16,7 +16,9 @@ if (session::exists('notcorrect')) {
 if (session::exists('loginerror')) {
     echo session::flash('loginerror');
 }
-
+if (session::exists('email')) {
+    echo session::flash('email');
+}
 ?>
 
 

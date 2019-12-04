@@ -2,15 +2,19 @@
 require_once 'init.php';
 include_once("includes/footer.html");
 $user = new user();
-if (session::exists('updated')) {
-    echo session::flash('updated');
-}
+
 ?>
 <br>
 <br>
 <br> <?php
 if (session::exists('email')) {
     echo session::flash('email');
+}
+if (session::exists('updated')) {
+    echo session::flash('updated');
+}
+if (session::exists('error')) {
+    echo session::flash('error');
 }
 if (!$user->isLoggedIn()) {
     redirect::to('index.php');

@@ -29,13 +29,19 @@
                 $code = hash::make('code', $saltcode);
                 if ($validation->send_email(input::get('email'), $code, null, null)) {
                         session::flash('email', 'Please check your email');
-                        redirect::to('../email_reset_page.php');
+                        $user->logout();
+                        redirect::to('../login_page.php');
                     }
                 } catch (Exception $e) {
                     die ($e->getMessage());
                 }
             }
+        } else {
+            $error = $validation->errors();
+            session::flash('error', $error[0] . '<br>');
+            redirect::to('../email_reset_page.php');
         }
-    }
+    } 
+    
 }
     ?>

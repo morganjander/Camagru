@@ -24,7 +24,8 @@ class input {
             return $text;
         }
         else if (isset($_GET[$item])) {
-            return $_GET[$item]; 
+            $text = htmlspecialchars($_GET[$item]);
+            return $text; 
         }
         else if (isset($_FILES[$item])) {
             return $_FILES[$item]; 
