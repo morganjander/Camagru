@@ -21,6 +21,7 @@ if (token::check(input::get('token'))) {
             redirect::to('../profile_page.php');
         } else if($login && !$verified) {
             session::flash('notverified', 'Please verify your email first');
+            $user->logout();
             redirect::to('../login_page.php');
         } else {
             session::flash('notcorrect', 'Incorrect login details');
