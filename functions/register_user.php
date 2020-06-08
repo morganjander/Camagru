@@ -54,7 +54,7 @@ if (Input::exists()) {
         
                 if ($validation->send_email(input::get('email'), $code, null, null)) {
                     session::flash('email', 'Please check your email');
-                    redirect::to('../index.php');
+                    redirect::to('../register_page.php');
                 }
             } catch (Exception $e) {
                 die ($e->getMessage());

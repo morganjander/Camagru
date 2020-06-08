@@ -2,13 +2,17 @@
 require_once 'init.php';
 include_once("includes/header.html");
 ?>
-<br>
-<br>
-<br> <?php
+<?php
 if (session::exists('email')) {
+    echo "<br>
+    <br>
+    <br> ";
     echo session::flash('email');
 }
 if (session::exists('error')) {
+    echo "<br>
+    <br>
+    <br> ";
     echo session::flash('error');
 }
 ?>
