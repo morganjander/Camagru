@@ -1,8 +1,14 @@
-# Camagru
+3# Camagru
  First web application at WeThinkCode_
  Developed on Windows with XAMPP
- Setup: 
- clone repository into htdocs
- edit init.php and functions/install.php if neccessary
- visit localhost/Camagru, refresh after database created successfully. 
+ Setup:
+ <ol>
+  <li>clone repository into htdocs</li>
+  <li> edit init.php and functions/install.php if neccessary</li>
+  <li> visit localhost/Camagru, refresh after database created successfully.</li>
+</ol>
+  
+ 
+
+
  
