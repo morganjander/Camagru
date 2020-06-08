@@ -1,6 +1,8 @@
 <?php
 require_once 'init.php';
-include 'functions/display_all_photos.php';
+include 'functions/display_user_photos.php';
+include_once("includes/header.html");
+include_once("includes/footer.html");
 ?>
 <br>
 <br>
@@ -17,33 +19,14 @@ if (session::exists('updated')) {
 }
 $user = new user();
 if ($user->isLoggedIn()) {
-include_once("includes/footer.html");
-    ?>
-    <br>
-    <br>
-    <p>Hello <a href="#"><?php echo escape($user->data()->username);?> </a></p>
-    <ul>
-    <li><a href="update_page.php">Change Username</a></li>
-    <li><a href="password_reset_page.php">Change Password</a></li>
-    <li><a href="email_reset_page.php">Change Email</a></li>
-    <li><a href="email_preference_page.php">Update Email Preferences</a></li>
-    </ul>
+
+?><br><br><br><br>
+<h1 class='font-weight-light text-left mt-4 mb-0'><?php echo escape($user->data()->username);?>'s Gallery</h1>
 <?php
-display_all_photos($user->data()->id);
-?>
-    <br>
-<br>
-<br>
-<br>
-<?php
+display_user_photos($user->data()->id);
+
 } else {
-    ?>
-    <br>
-<br>
-<br>
-<br>
-<?php
-        echo '<p>You need to <a href="login_page.php">Log in</a> or <a href="register_page.php">Register</a></p>';
+    redirect::to('index.php');
 }
 ?>
     

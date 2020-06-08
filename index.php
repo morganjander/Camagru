@@ -1,36 +1,41 @@
 
 <?php
     require_once 'init.php';
+    include_once("includes/header.html");
     include 'functions/display_all_photos.php';
-?>
-<br>
-<br>
-<br> <?php
+    $user = new user();
+    if ($user->isLoggedIn()) {
+        include_once("includes/footer.html");
+    } else {
+        include_once("includes/footer logged_out.html");
+    }
+    display_all_photos();
+
     if (session::exists('verified')) {
+        echo "<br>
+    <br>
+    <br>";
         echo session::flash('verified');
     }
     if (session::exists('error')) {
+        echo "<br>
+    <br>
+    <br>";
         echo session::flash('error');
     }
     if (session::exists('login to like')) {
+        echo "<br>
+    <br>
+    <br>";
         echo session::flash('login to like');
     }
     if (session::exists('login to upload')) {
+        echo "<br>
+    <br>
+    <br>";
         echo session::flash('login to upload');
     }
-    $user = new user();
-    if ($user->isLoggedIn()) {
-    include_once("includes/footer.html");
-    ?>
-    <p>Hello <a href="profile_page.php"><?php echo escape($user->data()->username);?> </a></p>
-    <?php
-    } else {
-        echo '<p><a href="login_page.php">Log in</a> or <a href="register_page.php">Register</a></p>';
-    }
-    display_all_photos();
-    ?>
-    <br>
-    <br>
+    
     
 
 

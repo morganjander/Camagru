@@ -1,6 +1,6 @@
 <?php
 require_once 'init.php';
-include_once("includes/footer.html");
+include_once("includes/header.html");
 $user = new user();
 $ask = 0;
 
@@ -12,6 +12,7 @@ if (session::exists('temp_image')) {
     $ask = 1;
 } else if (session::exists('old_image')){
     $imageURL = session::get('old_image');
+    session::delete('old_image');
 } else {
     $imageURL = input::get('image');
 }
@@ -19,24 +20,25 @@ if (session::exists('temp_image')) {
 <br>
 <br>
 <br> <?php
-echo "<div class = 'box column has-text-centered is-6 is-offset-3'>
+echo "<br>
+<br><div style='text-align:center;'>
 <img src='uploads/".$imageURL."'/>
 <br />
 </div>";
 if ($ask) {
     ?>
-    <div class = 'box column has-text-centered is-6 is-offset-3'>
+    <div style='text-align:center;'>>
     <h3>Keep changes?</h3> 
     <form action='functions/edit_image.php' method='post'>
-    <input type='submit' name='Yes' value='Yes' class='button' style='background-color:#f35588'>
-    <input type='submit' name='No' value='No' class='button' style='background-color:#f35588'>
+    <input type='submit' name='Yes' value='Yes' class="btn btn-default btn-lg">
+    <input type='submit' name='No' value='No' class="btn btn-default btn-lg">
     </form>
 <br />
 </div>
 <?php
 }
 ?>
-<div class = "box column has-text-centered is-6 is-offset-3">
+<div style='text-align:center;' style='background-color:#f35588'>
 <h3>Add a border</h3> 
 <a href='functions/edit_image.php?image=<?php echo "$imageURL";?>&border=1.png'><img src="http://localhost/Camagru/borders/1.png" height="125" width="125"></a>
 <a href='functions/edit_image.php?image=<?php echo "$imageURL";?>&border=2.png'><img src="http://localhost/Camagru/borders/2.png" height="125" width="125"></a>

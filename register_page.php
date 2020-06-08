@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/header.html");
 ?>
 <br>
 <br>
@@ -12,32 +13,29 @@ if (session::exists('error')) {
 }
 ?>
 <br>
-<html>
-<form action="functions/register_user.php" method="post">
-<div class = "box column is-7 is-offset-one-quarter has-text-centered">
-<h3>Enter your details to register</h3>  
-    <div class="field">
-    <label for="username">Username</label>
-    <input type="text" name="username" value="<?php echo escape(Input::get('username'))?>" autocomplete="off" id="username">
-    </div>
-
-    <div class="field">
-    <label for="email">Email</label>
-    <input type="email" name="email" value="<?php echo escape(Input::get('email'))?>" id="email">
-    </div>
-
-    <div class="field">
-    <label for="password">Choose a password</label>
-    <input type="password" name="password" id="password">
-    </div>
-
-    <div class="field">
-    <label for="repeat_password">Enter your password again</label>
-    <input type="password" name="repeat_password" id="repeat_password">
-    </div>
-
-    <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Register" class="button" style="background-color:#f35588"> 
+</head>
+<body>
+<div class="signup-form">
+    <form action="functions/register_user.php" method="post">
+		<h2>Register</h2>
+        <div class="form-group">
+			<input type="text" class="form-control" name="username" placeholder="Username" required="required" id="username" value="<?php echo escape(Input::get('username'))?>">	      	
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="Email" required="required" value="<?php echo escape(Input::get('email'))?>" id="email">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="repeat_password" placeholder="Confirm Password" required="required" id="repeat_password">
+        </div>        
+		<div class="form-group">
+            <input type="hidden" name="token" value="<?php echo token::generate();?>">
+            <button type="submit" class="btn btn-default btn-lg btn-block" >Register Now</button>
+        </div>
+    </form>
+	<div class="text-center">Already have an account? <a href="login_page.php">Log in</a></div>
 </div>
-</form>
+</body>
 </html>

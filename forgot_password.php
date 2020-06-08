@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/header.html");
 ?>
 <br>
 <br>
@@ -33,5 +34,5 @@ if ($validation->passed()) {
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Send">
+    <button type="submit" class="btn btn-default btn-lg ">Send</button>
 </form>

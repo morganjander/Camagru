@@ -1,5 +1,6 @@
 <?php
     require_once 'init.php';
+    include_once("includes/header.html");
     include_once("includes/footer.html");
     ?>
     <br>
@@ -35,6 +36,6 @@
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" style="background-color:#f35588" name="yes" value="Yes">
-    <input type="submit" style="background-color:#f35588" name="no" value="No"> 
+    <button type="submit" name="yes" class="btn btn-default btn-lg ">Yes</button>
+    <button type="submit" name="no" class="btn btn-default btn-lg ">No</button>
 </form>

@@ -2,6 +2,11 @@
 
 class redirect {
     public static function to($location = null) {
+        if($location == 'back'){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+	        exit();
+        }
+        
         if ($location) {
             if (is_numeric($location)){
                 switch ($location) {

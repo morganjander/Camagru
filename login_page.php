@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/header.html");
 ?>
 <br>
 <br>
@@ -25,23 +26,24 @@ if (session::exists('email')) {
 
 <br>
 
-<html>
-<form action="functions/login_user.php" method="post">
-<div class = "box column is-7 is-offset-one-quarter has-text-centered">
-<h3>Enter your details to login</h3> 
-    <div class="field">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    </div>
-
-    <div class="field">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    </div>
-
-    <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" value="Log in" class="button" style="background-color:#f35588"> <a href="forgot_password.php">Forgot Password?</a>
+<html lang="en">
+<body>
+<div class="signup-form">
+    <form action="functions/login_user.php" method="post">
+		<h2>Log In</h2>
+        <div class="form-group">
+			<input type="text" class="form-control" name="username" placeholder="Username" required="required" id="username" value="<?php echo escape(Input::get('username'))?>">	      	
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required" id="password" value="<?php echo escape(Input::get('email'))?>" id="email">
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="token" value="<?php echo token::generate();?>">
+            <button type="submit" class="btn btn-default btn-lg btn-block" >Log In</button>
+        </div>
+    </form>
+    <div class="text-center">Don't have an account? <a href="register_page.php">Register here</a></div>
+    <div class="text-center">Forgot password? <a href="forgot_password.php">Click here</a></div>
 </div>
-</form>
+</body>
 </html>
-

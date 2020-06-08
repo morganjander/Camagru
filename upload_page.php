@@ -1,10 +1,8 @@
 <?php
 require_once 'init.php';
+include_once("includes/header.html");
 include_once("includes/footer.html");
-?>
-<br>
-<br>
-<br> <?php
+
 if (session::exists('image upload success')) {
     echo session::flash('image upload success');
 }
@@ -17,24 +15,29 @@ if (!$user->isLoggedIn()) {
     redirect::to('index.php');
 }
 ?>
-<br>
-<div class = "box column is-7 has-text-centered is-10 is-offset-1">
-        <h3 class = "subtitle">Live Image</h3> 
-        <video id="video" width="500" height="300" ></video>
-        <br/>
-        <button class = "button is-small" style="background-color:#f35588" id="snap">Take Photo</button><br>
-        <br/>
-        <h3 class = "subtitle">Captured Photo</h3>
-        <canvas id="canvas" width="400" height="300"></canvas>
-    <form method="post" action="functions/upload_image.php" enctype="multipart/form-data">
-        <input type="file" id="image" name="image">
-        <button class = "button" style="background-color:#f35588" id="submitphoto">Submit File</button><br>
-        <input type="hidden" id="image1" name="image1" value="">
-        
-    </form>
+<div style="margin-top: 120px; margin-bottom: 120px;">
+<div style="text-align:center;">
+<h3>Live Image</h3> 
 </div>
-    <br >
+<div style="text-align:center;">
+<video id="video" width="400" height="300" ></video>
+</div>
+<div style="text-align:center;">
+<button class="btn btn-default" id="snap">Take Photo</button><br>
+</div>   
+<div style="text-align:center;">
+<h3>Captured Photo</h3>
+<canvas id="canvas" width="400" height="300"></canvas>
+</div>        
+<div style="text-align:center;">
+<form method="post" action="functions/upload_image.php" enctype="multipart/form-data">
+        <input type="file" id="image" name="image">
+        <button  class="btn btn-default" id="submitphoto">Submit File</button><br>
+        <input type="hidden" id="image1" name="image1" value="">
+    </form>
     <script src="photo.js"></script>
-    <br>
-    <br>
-    <br>
+</div>      
+    
+
+    
+  

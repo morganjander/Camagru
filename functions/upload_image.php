@@ -66,7 +66,7 @@ $user = new user();
                 'likes' => 0
             ));
             session::flash('image upload success', 'Image upload successful');
-            redirect::to('../upload_page.php');
+            redirect::to('../profile_page.php');
         }
         catch (Exception $e) {
             die ($e->getMessage());

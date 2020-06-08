@@ -17,7 +17,7 @@
          $sql = "CREATE DATABASE IF NOT EXISTS db";
          
          if (mysqli_query($conn, $sql)) {
-            echo "Database created successfully, please refresh<br/>";
+            echo "<br><br><br>Database created successfully, please refresh";
          } else {
             echo "Error creating database: " . mysqli_error($conn);
          }

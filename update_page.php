@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+include_once("includes/header.html");
 include_once("includes/footer.html");
 $user = new user();
 ?>
@@ -16,12 +17,18 @@ if (!$user->isLoggedIn()) {
     redirect::to('index.php');
 }
 ?>   
-<form action="functions/update_username.php" method="post">
-    <div class="field">
-    <label for="username">Change Username</label>
-    <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" autocomplete="off">
-    </div>
+<br>
+<br>
+<div style="text-align:center; width: 400px;">
+    <form action="functions/update_username.php" method="post">
+		<h2>Change Username</h2>
+        <div class="form-group">
+			<input type="text" class="form-control" name="username" placeholder="Username" required="required" id="username" value="<?php echo escape($user->data()->username);?>">	      	
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="token" value="<?php echo token::generate();?>">
+            <button type="submit" class="btn btn-default btn-lg btn-block" >Update</button>
+        </div>
+    </form>
+</div>
 
-    <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <input type="submit" style="background-color:#f35588" value="Update"> 
-</form> 
