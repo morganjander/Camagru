@@ -14,7 +14,8 @@
         if (token::check(input::get('token'))) {
             if (input::get('yes')) {
                 $email = 1;
-            } else {
+            } 
+            if (input::get('no')) {
                 $email = 0;
             }
                 try {
@@ -36,6 +37,6 @@
     </div>
 
     <input type="hidden" name="token" value="<?php echo token::generate();?>">
-    <button type="submit" name="yes" class="btn btn-default btn-lg ">Yes</button>
-    <button type="submit" name="no" class="btn btn-default btn-lg ">No</button>
+    <button type="submit" name="yes" value="yes" class="btn btn-default btn-lg ">Yes</button>
+    <button type="submit" name="no" name="no" value="no" class="btn btn-default btn-lg ">No</button>
 </form>
