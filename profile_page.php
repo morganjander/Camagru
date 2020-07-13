@@ -26,6 +26,7 @@ if ($user->isLoggedIn()) {
 display_user_photos($user->data()->id);
 
 } else {
+    session::flash('not logged in', 'You are not logged in');
     redirect::to('index.php');
 }
 ?>
