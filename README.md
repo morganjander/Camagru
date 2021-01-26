@@ -1,7 +1,8 @@
-<h1>Camagru</h1>
-A simple image-sharing web application; similar to Instagram.
+ <h1>Camagru</h1>
+ A simple image-sharing web application; similar to Instagram.
+ 
+ <h1>Requirements</h1>
 
-<h1>Requirements</h1>
  <ol>
   <li>PHP</li>
   <li>JavaScript</li>
