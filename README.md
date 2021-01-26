@@ -1,5 +1,7 @@
 <h1>Camagru</h1>
- First web application at WeThinkCode_
+ A simple picture-sharing web application, similar to Instagram.
+ 
+ <h1>Requirements</h1>
  Developed on Windows with XAMPP
  Setup:
  <ol>
