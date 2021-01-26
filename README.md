@@ -1,4 +1,4 @@
-3# Camagru
+<h1>Camagru</h1>
  First web application at WeThinkCode_
  Developed on Windows with XAMPP
  Setup:
