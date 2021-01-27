@@ -17,12 +17,5 @@
         image.setAttribute('value', canvas.toDataURL());
         
     });
-
-    document.getElementById("submitphoto").addEventListener("click", function() {
-        
-            
-    });
-
-
  
 })();

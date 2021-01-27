@@ -13,6 +13,7 @@ class Dbh {
         try {
             $dsn ="mysql:host=". config::get('mysql/host') . ";dbname=" . config::get('mysql/dbname') . ";charset=" . config::get('mysql/charset'); //Data/base Source Name
             $this->_pdo = new PDO($dsn, config::get('mysql/username'), config::get('mysql/password')); //establishes a new connection and stores created PDO instance
+            $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
 
         } catch (PDOException $e){ //catches the exception thrown by the PDO constructor
@@ -40,7 +41,6 @@ class Dbh {
                 }
             }
             if ($this->_query->execute()) {
-                $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ); //stores an object in $_results, not an array
                 $this->_count = $this->_query->rowCount();
             }
             else {
@@ -74,6 +74,7 @@ class Dbh {
     }
 
     public function results() {
+        $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ); //stores an object in $_results, not an array
         return $this->_results;
     }
 

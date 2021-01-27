@@ -6,7 +6,7 @@ if (Input::exists()) {
         $validation = $validate->check($_POST, array (
             'username' => array(
                 'required' => true,
-                'min' => 2,
+                'min' => 4,
                 'max' => 20,
                 'unique' => 'users'
             ),
@@ -47,7 +47,7 @@ if (Input::exists()) {
                 $saltcode = $results->verification_token;
                 $user->update($results->id, array(
                     'password' => hash::make(input::get('password'), $results->salt),
-                    'verification_token' => hash::make('code', $saltcode) //because retrieving salt from the database changes it argh                 
+                    'verification_token' => hash::make('code', $saltcode)               
                 ));
                 $code = hash::make('code', $saltcode);
             }

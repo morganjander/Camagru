@@ -4,16 +4,12 @@ include_once("includes/header.html");
 ?>
 <?php
 if (session::exists('email')) {
-    echo "<br>
-    <br>
-    <br> ";
-    echo session::flash('email');
+    session::flash('email');
+    echo '<script type="text/javascript">alert("Please check your email");</script>';
 }
 if (session::exists('error')) {
-    echo "<br>
-    <br>
-    <br> ";
-    echo session::flash('error');
+    session::flash('error');
+    echo '<script type="text/javascript">alert("Please check your email");</script>';
 }
 ?>
 <br>

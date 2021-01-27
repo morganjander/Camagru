@@ -22,7 +22,6 @@ class session {
         if (self::exists($name)) {
             $session = self::get($name);
             self::delete($name);
-            return $session;
         } else {
             self::put($name, $string);
         }

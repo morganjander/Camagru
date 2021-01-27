@@ -8,10 +8,12 @@ function display_all_photos($user = null){
     else {
         $photos = $image->get_all_photos();
     }
+
+    $photos = $photos->results();
     
-    if($photos->results()){
+    if($photos){
         echo "<div style='margin-top: 120px; margin-bottom: 120px;'>";
-        foreach ($photos->results() as $photo) {
+        foreach ($photos as $photo) {
             $imageURL = $photo->filename;
             if ($name->find($photo->user_id)) {
                 $uploader = $name->data()->username;
@@ -43,8 +45,9 @@ function display_all_photos($user = null){
                             <a href='functions/add_like.php?image=".$imageURL."'><i class='far fa-heart' style='color:#FFB3BA;'></i></a>
                         </p>
                         <p class='text-secondary'style='text-align:left;'>";
-                        if ($comments->results()) {
-                            foreach ($comments->results() as $comment) {
+                        $comments = $comments->results();
+                        if ($comments) {
+                            foreach ($comments as $comment) {
                                 if ($name->find($comment->user_id)) {
                                     $commenter = $name->data()->username;
                                 }

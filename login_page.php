@@ -8,6 +8,10 @@ include_once("includes/header.html");
 if (session::exists('updated')) {
     echo session::flash('updated');
 }
+if (session::exists('verified')) {
+    session::flash('verified');
+    echo '<script type="text/javascript">alert("Your email has been verified; you can now login");</script>';
+}
 if (session::exists('notverified')) {
     echo session::flash('notverified');
 }

@@ -15,7 +15,7 @@ else {
                 'verified' => 1
             ));
             session::flash('verified', 'Thank you, your email has been verified');
-            redirect::to('../index.php');
+            redirect::to('../login_page.php');
         }
         else {
             echo "uh-oh";

@@ -4,13 +4,13 @@ function display_user_photos($user){
     $name = new user();
     
     $photos = $image->get_all_user_photos($user);
-    
+    $photos = $photos->results();
     echo "
     <hr class='mt-2 mb-5'>
     <div class='row text-center text-lg-left' style='margin-top: 12px; margin-bottom: 120px;'>";
-    if($photos->results()){
+    if($photos){
 
-        foreach ($photos->results() as $photo) {
+        foreach ($photos as $photo) {
             $imageURL = $photo->filename;
             if ($name->find($photo->user_id)) {
                 $uploader = $name->data()->username;

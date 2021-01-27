@@ -17,9 +17,13 @@
          $sql = "CREATE DATABASE IF NOT EXISTS db";
          
          if (mysqli_query($conn, $sql)) {
-            echo "<br><br><br>Database created successfully, please refresh";
+            echo '<script type="text/javascript">alert("Database created successfully, please refresh");</script>';
          } else {
-            echo "Error creating database: " . mysqli_error($conn);
+            echo "<br>
+    <br>
+    <br>";
+    echo "Error creating database: " . mysqli_error($conn);
+            echo '<script type="text/javascript">alert("Error creating database: " . mysqli_error($conn));</script>';
          }
          $dbname = 'db'; 
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);  
@@ -52,6 +56,9 @@
          if(mysqli_query($conn, $sql)){  
          //echo "comments table created successfully<br/>";  
          } else {  
+            echo "<br>
+    <br>
+    <br>";
             echo "comments table is not created successfully<br/>" . mysqli_error($conn);  
          }
 
@@ -69,6 +76,9 @@
          if(mysqli_query($conn, $sql)){  
         // echo "users table created successfully<br/>";  
          } else {  
+            echo "<br>
+    <br>
+    <br>";
             echo "users table is not created successfully<br/>" . mysqli_error($conn);  
          }  
          
