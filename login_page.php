@@ -10,7 +10,7 @@ if (session::exists('updated')) {
 }
 if (session::exists('verified')) {
     session::flash('verified');
-    echo '<script type="text/javascript">alert("Your email has been verified; you can now login");</script>';
+    echo '<script type="text/javascript">alert("Thank you for verifying your email; you can now login");</script>';
 }
 if (session::exists('notverified')) {
     echo session::flash('notverified');

@@ -26,7 +26,13 @@
     } else {
         include_once("includes/footer logged_out.html");
     }
-    display_all_photos();
+
+    if (!display_all_photos()) {
+        echo "<br><br><br>"
+        ?>
+            <h1 style="text-align: center; color: #eb7130;">No Posts Yet</h1>
+       <?php
+    }
     
     
 

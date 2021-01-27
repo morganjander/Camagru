@@ -14,7 +14,6 @@ class Dbh {
             $dsn ="mysql:host=". config::get('mysql/host') . ";dbname=" . config::get('mysql/dbname') . ";charset=" . config::get('mysql/charset'); //Data/base Source Name
             $this->_pdo = new PDO($dsn, config::get('mysql/username'), config::get('mysql/password')); //establishes a new connection and stores created PDO instance
             $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
 
         } catch (PDOException $e){ //catches the exception thrown by the PDO constructor
             require 'includes/install.php';

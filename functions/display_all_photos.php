@@ -65,8 +65,12 @@ function display_all_photos($user = null){
                     </div>
                 </div>
             </div>";
+            return true;
             
         }
         echo "</div>";
-    }   
+    }   else {
+       return false;
+            
+    }
 }
